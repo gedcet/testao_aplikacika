@@ -3,19 +3,15 @@ import axios from "axios"
 
 const AddQuestion = () => 
 {
-    const [answers, setAnswers] = React.useState([
-        {
-            "answer": "",
-            "correct": "",
-        }
-    ])
-
     const refQuestionText = React.createRef()
     const refQuestionTypeSelectMultiple = React.createRef()
     const refQuestionTypeSelectSingle = React.createRef()
 
-    const refAnswerText = React.createRef()
-    const refAnswerCorrect = React.createRef()
+    const refAnswer1Text = React.createRef()
+    const refAnswer1Correct = React.createRef()
+
+    const refAnswer2Text = React.createRef()
+    const refAnswer2Correct = React.createRef()
 
     const getSellectedQuestionType = () =>
     {
@@ -29,67 +25,43 @@ const AddQuestion = () =>
         }
     }
 
-    // const addAnswerRow = () =>
-    // {
-    //     const temp = [...answers]
-    //     temp.push(
-    //         {
-    //             "answer": "",
-    //             "correct": "",
-    //             "ref": React.createRef()
-    //         }
-    //     )
-    //     setAnswers(temp)
-    // }
-
-    // const delAnswerRow = () =>
-    // {
-    //     const temp = [...answers]
-    //     temp.pop()
-    //     setAnswers(temp)
-    // }
-
     const handleClick = async () =>
     {
-        const axios1 = await axios({
-            "method": "post",
-            "url": "/api/questions",
-            "data":
-            {
-                "text": refQuestionText.current.value,
-                "type": getSellectedQuestionType(),
-                "answers": [
-                    {
-                        "answer": refAnswerText.current.value,
-                        "correct": false
-                    }
-                ]
-            }
-        }
-        )
-    }
+        try
+        {
+            const axios1 = await axios({
+                "method": "post",
+                "url": "/api/questions",
+                "data": {
+                    "text": refQuestionText.current.value,
+                    "type": getSellectedQuestionType(),
+                    "answers": [
+                        {
+                            "answer": refAnswer1Text.current.value,
+                            "correct": refAnswer1Correct.current.checked
+                        },
+                        {
+                            "answer": refAnswer2Text.current.value,
+                            "correct": refAnswer2Correct.current.checked
+                        }
+                    ]
+                }
+            })
 
-    // const array = []
-    // for (let i = 0; i < answers.length; i++)
-    // {
-    //     array.push(
-    //         <div key={i}>
-    //             <label>Answer {i}
-    //                 <input type="text" className="answtxt" ></input>
-    //             </label>
-    //             <label> Correct
-    //                 <input type="checkbox" ></input>
-    //             </label>
-    //         </div>
-    //     )
-    // }
+            console.log("AddQuestion", axios1)
+        }
+        catch (err)
+        {
+            console.log("AddQuestion", err)
+        }
+    }
 
     return (
         <div>
             <h6>Klausimas</h6>
             <textarea ref={refQuestionText} className="addquestiontextarea"></textarea>
-            <h6>Klausimo tipas</h6>
 
+            <h6>Klausimo tipas</h6>
             <label>Select multiple
                 <input type="radio" ref={refQuestionTypeSelectMultiple} name="radBut"></input>
             </label>
@@ -98,21 +70,26 @@ const AddQuestion = () =>
             </label>
 
             <h6>Iveskite atsakyma/us</h6>
-            <label>Answer
-                <input type="text" className="answtxt" ref={refAnswerText}></input>
+
+            <label>1
+                <input type="text" className="answtxt" ref={refAnswer1Text}></input>
             </label>
-            <label> Correct
-                <input type="checkbox" ref={refAnswerCorrect} ></input>
+            <label>Correct
+                <input type="checkbox" ref={refAnswer1Correct}></input>
             </label>
-            {/* {array}
-            <br></br>
-            <button onClick={addAnswerRow}>Ivesk dar viena atsakyma</button>
-            <button onClick={delAnswerRow}>Istrink paskutini atsakyma</button> */}
-            <br></br>
-            <button onClick={handleClick}>Patvirtink</button>
+            <br />
+
+            <label>2
+                <input type="text" className="answtxt" ref={refAnswer2Text}></input>
+            </label>
+            <label>Correct
+                <input type="checkbox" ref={refAnswer2Correct}></input>
+            </label>
+            <br />
+
+            <button onClick={handleClick}>add</button>
 
         </div>
-
     )
 }
 export default AddQuestion
