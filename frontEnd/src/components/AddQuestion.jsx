@@ -23,17 +23,15 @@ const AddQuestion = () =>
     {
         if (refQuestionTypeSelectMultiple.current.checked === true)
         {
-
             return "selectMultiple"
         }
         if (refQuestionTypeSelectSingle.current.checked === true)
         {
-
             return "selectOne"
         }
     }
 
-    const sum_of_sellected = () =>
+    const sum_of_sellected = () =>//skaiciuojam kiek pazymeta varneliu
     {
         let sum_of_correct = 0
         if (refAnswer1Correct.current.checked === true)
@@ -66,14 +64,14 @@ const AddQuestion = () =>
 
         if (refAnswer1Text.current.value === "")
         {
-            alert("Neuzpildytas atsakymo laukas ")
+            alert("varnele nepazymetas teisigas/i atsakymai")
             return
         }
 
         if ((refQuestionTypeSelectSingle.current.checked === true) &&
             (sum_of_sellected() !== 1))
         {
-            // alert("pazymetas atsakymas netinka ")
+             alert("pazymetas atsakymas netinka ")
             return
         }
 
@@ -165,7 +163,7 @@ const AddQuestion = () =>
             </label>
             <br />
 
-            <button onClick={handleClick}>add</button>
+            <button onClick={handleClick}>Ivesti klausima i duomenu baze</button>
 
         </div>
     )

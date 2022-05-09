@@ -12,10 +12,18 @@
   height: 100px
 }
 
-.answer_correct{
-color: green;
+.answer_correct {
+  color: green;
 }
 
-.answer_not_correct{
-color: red;
+.answer_not_correct {
+  color: black;
+}
+
+.answer_design {
+  border-style: solid;
+  border-color: lightgoldenrodyellow;
+  margin-top: 5px;
+  margin-left: 5%;
+  width: 80%;
 }
