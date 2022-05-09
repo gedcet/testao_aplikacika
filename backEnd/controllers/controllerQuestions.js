@@ -8,9 +8,7 @@ routerQuestions.get("/", async function (req, res)
     try
     {
         const result = await model_question.find()
-
         //laiminga pabaiga
-
         res.statusCode = 200
         res.json(result)
     }

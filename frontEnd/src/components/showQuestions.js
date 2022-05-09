@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import Question from "./Question"
 
 const ShowQuestions = () => 
 {
@@ -24,12 +25,18 @@ const ShowQuestions = () =>
         }
     }
 
+    const array_text = []
+    for (let i = 0; i < questions.length; i++)
+    {
+        array_text.push(<Question key={i} question={questions[i]} />)
+    }
+
     return (
         <div>
-            <h6>Klausimai</h6>
-
-            <p>{JSON.stringify(questions)}</p>
-
+            <h6>Klausimai --</h6>
+            <br></br>
+            {/* <p>{JSON.stringify(questions)}</p> */}
+            {array_text}
             <button onClick={get_all_questions}>Gauti klausimus</button>
         </div>
     )

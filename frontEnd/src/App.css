@@ -9,5 +9,13 @@
 
 .addquestiontextarea {
   width: 80%;
-  height: 200px
+  height: 100px
+}
+
+.answer_correct{
+color: green;
+}
+
+.answer_not_correct{
+color: red;
 }
