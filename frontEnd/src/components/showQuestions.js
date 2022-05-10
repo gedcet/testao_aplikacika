@@ -2,7 +2,7 @@ import React from "react"
 import axios from "axios"
 import Question from "./Question"
 
-const ShowQuestions = () => 
+const ShowQuestions = (props) => 
 {
     const [questions, setQuestions] = React.useState([])
 
@@ -26,7 +26,11 @@ const ShowQuestions = () =>
     const array_text = []
     for (let i = 0; i < questions.length; i++)
     {
-        array_text.push(<Question key={i} question={questions[i]} get_all_questions={get_all_questions} />)
+        array_text.push(<Question
+            key={i}
+            question={questions[i]}
+            get_all_questions={get_all_questions}
+            setStateWindowEditQuestion={props.setStateWindowEditQuestion} />)
     }
 
     return (
@@ -35,6 +39,9 @@ const ShowQuestions = () =>
             {/* <p>{JSON.stringify(questions)}</p> */}
             {array_text}
             <button onClick={get_all_questions}>Gauti klausimus</button>
+
+
+
         </div>
     )
 }

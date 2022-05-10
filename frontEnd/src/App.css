@@ -27,3 +27,13 @@
   margin-left: 5%;
   width: 80%;
 }
+
+.window_edit_question{
+  width: 80%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: beige;
+  border: 1px solid black
+
+}

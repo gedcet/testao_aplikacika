@@ -15,18 +15,13 @@ const Question = (props) =>
             try
             {
                 const result = await axios.delete(`/api/questions/${props.question._id}`)
-                if (result.statusCode !== 200)
-                {
-                    alert("Nepavyko istrinti ")
-                    return
-                }
                 props.get_all_questions()
                 alert("Pavyko istrinti ")
 
             }
             catch (err)
             {
-                alert("Ivyko klaida")
+                alert("Ivyko klaida: ", err)
                 console.log(err)
             }
         }
@@ -52,7 +47,19 @@ const Question = (props) =>
             <p> Atsakymo tipas: {props.question.type}</p>
             {/* <p>Atsakymas: {props.question.answers[0].answer}</p> */}
             {atsakymo_txt_array}
-            <button onClick={delete_question}>Trinti klausima </button><button onClick={edit_question}>Redaguoti klausima </button>
+            <button onClick={delete_question}>Trinti klausima </button>
+            <button onClick={() =>
+            {
+                props.setStateWindowEditQuestion({
+                    text: props.question.text,
+                    type: props.question.type,
+                    answers: [
+                        { text: props.question.answers[0].answer, correct: false },
+                        { text: props.question.answers[1].answer, correct: true },
+                        { text: props.question.answers[2].answer, correct: true },
+                        { text: props.question.answers[3].answer, correct: true }],
+                })
+            }}> Redaguok</button>
         </div >
     )
 }
