@@ -1,37 +1,37 @@
 import axios from "axios";
 import React from "react";
 
-const edit_question = () =>
-{
-    window.confirm("ar tikrai norite redaguoti klausima")
-}
-
-const delete_question = async (props) =>
-{
-    if (window.confirm("ar tikrai norite istrinti klausima") === true)
-    {
-        try
-        {
-            const result = await axios.delete(`/api/questions/${props.question._id}`)
-            if (result.statusCode !== 200)
-            {
-                alert("Nepavyko istrinti ")
-                return
-            }
-            props.get_all_questions()
-            alert("Pavyko istrinti ")
-            
-        }
-        catch (err)
-        {
-            alert("Ivyko klaida")
-            console.log(err)
-        }
-    }
-}
-
 const Question = (props) =>
 {
+    const edit_question = () =>
+    {
+        window.confirm("ar tikrai norite redaguoti klausima")
+    }
+
+    const delete_question = async () =>
+    {
+        if (window.confirm("ar tikrai norite istrinti klausima") === true)
+        {
+            try
+            {
+                const result = await axios.delete(`/api/questions/${props.question._id}`)
+                if (result.statusCode !== 200)
+                {
+                    alert("Nepavyko istrinti ")
+                    return
+                }
+                props.get_all_questions()
+                alert("Pavyko istrinti ")
+
+            }
+            catch (err)
+            {
+                alert("Ivyko klaida")
+                console.log(err)
+            }
+        }
+    }
+
     let atsakymo_txt_array = []
     for (let i = 0; i < props.question.answers.length; i++)
     {

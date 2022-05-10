@@ -14,10 +14,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set NODE_ENV=develpment&&react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://127.0.0.1:80/",
   "eslintConfig": {
     "extends": [
       "react-app",
