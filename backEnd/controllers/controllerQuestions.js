@@ -19,6 +19,28 @@ routerQuestions.get("/", async function (req, res)
     }
 })
 
+routerQuestions.delete("/:_id", async function (req, res)
+{
+    try
+    {
+        const result = await model_question.findByIdAndDelete(req.params._id)
+        //laiminga pabaiga
+        if(result === null)
+        {
+            res.statusCode = 400
+            alert("Nepavyko istrinti ")
+            res.end()    
+        }
+        res.statusCode = 200
+        res.json(result)
+    }
+    catch (err)
+    {
+        res.statusCode = 400
+        res.end()
+    }
+})
+
 routerQuestions.post("/", function (req, res)
 {
     if (req.body.text === undefined)
