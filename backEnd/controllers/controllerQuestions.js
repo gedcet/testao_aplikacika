@@ -18,7 +18,7 @@ routerQuestions.get("/", async function (req, res)
     }
 })
 
-routerQuestions.put("/api/questions/:_id", async function (req, res)
+routerQuestions.put("/:_id", async function (req, res)
 {
     if(req.params._id === undefined)
     {
@@ -43,7 +43,7 @@ routerQuestions.put("/api/questions/:_id", async function (req, res)
     }
 })
 
-routerQuestions.delete("/api/questions/:_id", async function (req, res)
+routerQuestions.delete("/:_id", async function (req, res)
 {
     try
     {

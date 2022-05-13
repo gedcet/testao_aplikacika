@@ -45,21 +45,15 @@ const Question = (props) =>
             <button onClick={delete_question}>Trinti klausima </button>
             <button onClick={() =>
             {
-                array_answer = []
-                for (let i = 0; i < props.question.answers.length; i++)
-                {
-                    if (props.question.answers[i].answer !== undefined)
-                    {
-                        array_answer.push({ text: props.question.answers[i].answer, correct: props.question.answers[i].correct })
-                    }
-                    
-                }
-                props.setStateWindowEditQuestion({
-                    _id: props.question._id,
-                    text: props.question.text,
-                    type: props.question.type,
-                    answers: [ array_answer ],
-                })
+                // array_answer = []
+                // for (let i = 0; i < props.question.answers.length; i++)
+                // {
+                //     if (props.question.answers[i].answer !== undefined)
+                //     {
+                //         array_answer.push({ text: props.question.answers[i].answer, correct: props.question.answers[i].correct })
+                //     }
+                // }
+                props.setStateWindowEditQuestion( props.question )
 
             }}> Redaguok</button>
         </div >
