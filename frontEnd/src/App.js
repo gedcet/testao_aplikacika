@@ -1,4 +1,6 @@
 import { useState } from 'react';
+
+
 import './App.css';
 import AddQuestion from './components/AddQuestion.jsx';
 import ShowQuestions from './components/showQuestions';
@@ -20,7 +22,7 @@ const App = function ()
     <div className="App">
       <AddQuestion></AddQuestion>
       <ShowQuestions setStateWindowEditQuestion={setStateWindowEditQuestion}></ShowQuestions>
-      <WindowEditQuestion state={stateWindowEditQuestion} setState={setStateWindowEditQuestion} ></WindowEditQuestion>
+      <WindowEditQuestion state={stateWindowEditQuestion} setState={setStateWindowEditQuestion}></WindowEditQuestion>
     </div>
   );
 }

@@ -39,9 +39,6 @@ const ShowQuestions = (props) =>
             {/* <p>{JSON.stringify(questions)}</p> */}
             {array_text}
             <button onClick={get_all_questions}>Gauti klausimus</button>
-
-
-
         </div>
     )
 }

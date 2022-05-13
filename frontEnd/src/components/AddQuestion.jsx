@@ -31,7 +31,7 @@ const AddQuestion = () =>
         }
     }
 
-    const sum_of_sellected = () =>//skaiciuojam kiek pazymeta varneliu
+    const sum_of_sellected = () =>//skaiciuojam kiek pazymeta correct varneliu
     {
         let sum_of_correct = 0
         if (refAnswer1Correct.current.checked === true)
