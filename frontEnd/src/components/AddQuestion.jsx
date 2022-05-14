@@ -116,8 +116,8 @@ const AddQuestion = () =>
     }
 
     return (
-        <div>
-            <h6>Klausimas</h6>
+        <div className="AddQuestion">
+            <h1>AddQuestion</h1>
             <textarea ref={refQuestionText} className="addquestiontextarea"></textarea>
 
             <h6>Klausimo tipas</h6>

@@ -20,9 +20,15 @@ const App = function ()
 
   return (
     <div className="App">
-      <AddQuestion></AddQuestion>
-      <ShowQuestions setStateWindowEditQuestion={setStateWindowEditQuestion}></ShowQuestions>
-      <WindowEditQuestion state={stateWindowEditQuestion} setState={setStateWindowEditQuestion}></WindowEditQuestion>
+
+      <AddQuestion />
+
+      <WindowEditQuestion
+        state={stateWindowEditQuestion}
+        setState={setStateWindowEditQuestion}
+      />
+
+      <ShowQuestions setStateWindowEditQuestion={setStateWindowEditQuestion} />
     </div>
   );
 }
