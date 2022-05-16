@@ -34,8 +34,8 @@ const ShowQuestions = (props) =>
     }
 
     return (
-        <div >
-            <h6>Klausimai:</h6>
+        <div className="ShowQuestions">
+            <h1>ShowQuestions</h1>
             {/* <p>{JSON.stringify(questions)}</p> */}
             {array_text}
             <button onClick={get_all_questions}>Gauti klausimus</button>

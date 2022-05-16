@@ -4,9 +4,8 @@ import Answer from "./Answer"
 
 const WindowEditQuestion = (props) =>
 {
-    //console.log("is WindowEditQuestion", props.question.text)
-
     const refQuestionText = React.createRef()
+
     const refQuestionTypeSelectMultiple = React.createRef()
     const refQuestionTypeSelectSingle = React.createRef()
 
@@ -22,13 +21,14 @@ const WindowEditQuestion = (props) =>
     const refAnswer4Text = React.createRef()
     const refAnswer4Correct = React.createRef()
 
-
     const change_field_value = () =>
     {
         let copy_of_state = { ...props.state }
 
+        //text
         copy_of_state.text = refQuestionText.current.value //tekstinis laukas
 
+        //type
         if (refQuestionTypeSelectMultiple.current.checked === true)// tipas
         {
             copy_of_state.type = "selectMultiple"
@@ -38,37 +38,36 @@ const WindowEditQuestion = (props) =>
             copy_of_state.type = "selectOne"
         }
 
-        if (copy_of_state.answers.length > 0)
+        //answers
+        if (copy_of_state.answers[0] !== undefined)
         {
-            copy_of_state.answers[0].text = refAnswer1Text.current.value //atsakymo 1 laukas
+            copy_of_state.answers[0].answer = refAnswer1Text.current.value //atsakymo 1 laukas
             copy_of_state.answers[0].correct = refAnswer1Correct.current.checked //correct 1 laukas
         }
 
         if (copy_of_state.answers.length > 1)
         {
-            copy_of_state.answers[1].text = refAnswer2Text.current.value //atsakymo 2 laukas
+            copy_of_state.answers[1].answer = refAnswer2Text.current.value //atsakymo 2 laukas
             copy_of_state.answers[1].correct = refAnswer2Correct.current.checked //correct 2 laukas
         }
 
         if (copy_of_state.answers.length > 3)
         {
-            copy_of_state.answers[2].text = refAnswer3Text.current.value //atsakymo 3 laukas
+            copy_of_state.answers[2].answer = refAnswer3Text.current.value //atsakymo 3 laukas
             copy_of_state.answers[2].correct = refAnswer3Correct.current.checked //correct 3 laukas
         }
 
         if (copy_of_state.answers.length > 4)
         {
-            copy_of_state.answers[3].text = refAnswer4Text.current.value //atsakymo 4 laukas
+            copy_of_state.answers[3].answer = refAnswer4Text.current.value //atsakymo 4 laukas
             copy_of_state.answers[3].correct = refAnswer4Correct.current.checked //correct 4 laukas
         }
 
         props.setState(copy_of_state)
-        //console.log(copy_of_state)
     }
 
     const send_request_edit_question = async () => 
     {
-        //  console.log("vesime duomenis " + props.state.text)
         try
         {
             const axios1 = await axios({
@@ -76,45 +75,47 @@ const WindowEditQuestion = (props) =>
                 "url": `/api/questions/${props.state._id}`,
                 "data": props.state
             })
-            alert("ok ")
-            console.log("send_request_edit_question ", axios1)
+            alert("ok")
         }
         catch (err)
         {
-            alert("not ok")
-            console.log("send_request_edit_question ", err)
+            alert("err")
         }
     }
 
     return (
-        <div className="window_edit_question">
-            <h4>Klausimo redagavimo langas</h4>
+        <div className="WindowEditQuestion">
+
+            <h1>WindowEditQuestion</h1>
 
             <textarea
-                className="addquestiontextarea"
                 value={props.state.text}
                 onChange={change_field_value}
-                ref={refQuestionText}>
-            </textarea>
+                ref={refQuestionText}
+            />
 
-            <br></br><br></br>
-            <label>Select multiple
-                <input
-                    type="radio" name="radBut"
-                    checked={props.state.type === "selectMultiple"}
-                    onChange={change_field_value}
-                    ref={refQuestionTypeSelectMultiple}>
-                </input>
-            </label>
+            <br />
 
-            <label>Select one
+            <label>
+                Select multiple
                 <input
                     type="radio"
-                    name="radBut"
+                    name="radio_1"
+                    checked={props.state.type === "selectMultiple"}
+                    onChange={change_field_value}
+                    ref={refQuestionTypeSelectMultiple}
+                />
+            </label>
+
+            <label>
+                Select one
+                <input
+                    type="radio"
+                    name="radio_1"
                     checked={props.state.type === "selectOne"}
                     onChange={change_field_value}
-                    ref={refQuestionTypeSelectSingle}>
-                </input>
+                    ref={refQuestionTypeSelectSingle}
+                />
             </label>
 
             {props.state.answers.length > 0 ? < Answer set_nr="1" set_value={props.state.answers[0].answer} set_onChange={change_field_value} set_ref_text={refAnswer1Text} set_ref_checked={refAnswer1Correct} set_checked={props.state.answers[0].correct} /> : null}
@@ -122,9 +123,9 @@ const WindowEditQuestion = (props) =>
             {props.state.answers.length > 2 ? < Answer set_nr="3" set_value={props.state.answers[2].answer} set_onChange={change_field_value} set_ref_text={refAnswer3Text} set_ref_checked={refAnswer3Correct} set_checked={props.state.answers[2].correct} /> : null}
             {props.state.answers.length > 3 ? < Answer set_nr="3" set_value={props.state.answers[3].answer} set_onChange={change_field_value} set_ref_text={refAnswer4Text} set_ref_checked={refAnswer4Correct} set_checked={props.state.answers[3].correct} /> : null}
 
-            <button onClick={send_request_edit_question}>Ivesti pataisytus klausimus i duomenu baze</button>
+            <button onClick={send_request_edit_question}>save</button>
 
-            <button>Uždaryti langą be įvedimo </button>
+            <button>close</button>
         </div>
     )
 }

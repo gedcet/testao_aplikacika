@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-
 }
 
 .answtxt {
@@ -20,7 +19,7 @@
   color: black;
 }
 
-.answer_design {
+.Question {
   border-style: solid;
   border-color: lightgoldenrodyellow;
   margin-top: 5px;
@@ -28,12 +27,17 @@
   width: 80%;
 }
 
-.window_edit_question{
+.AddQuestion, .WindowEditQuestion, .ShowQuestions {
   width: 80%;
-  position: fixed;
+  margin: auto auto;
+  padding: 5% 5%;
+  /* position: fixed; */
   top: 0px;
   left: 0px;
   background-color: beige;
   border: 1px solid black
+}
 
+.WindowEditQuestion textarea {
+  width: 80%;
 }

@@ -36,7 +36,7 @@ const Question = (props) =>
     }
 
     return (
-        <div className="answer_design">
+        <div className="Question">
             {/* <p>ID: {props.question._id}</p> */}
             <p>Klausimo tekstas: {props.question.text}</p>
             <p> Atsakymo tipas: {props.question.type}</p>
