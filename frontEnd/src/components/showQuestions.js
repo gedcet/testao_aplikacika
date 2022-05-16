@@ -40,6 +40,7 @@ const ShowQuestions = (props) =>
             {/* <p>{JSON.stringify(questions)}</p> */}
             {array_text}
             <button onClick={get_all_questions}>Gauti klausimus</button>
+            <button onClick={ () => { props.setShowWindow(null)} }>Uzdaryti langa</button>
         </div>
     )
 }

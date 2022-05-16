@@ -27,7 +27,7 @@
   width: 80%;
 }
 
-.ShowQuestions {
+.ShowQuestions, .viktorinos_langas {
   width: 80%;
   margin: auto auto;
   padding: 5% 5%;
@@ -35,7 +35,8 @@
   top: 0px;
   left: 0px;
   background-color: beige;
-  border: 1px solid black
+  border: 1px solid black;
+  text-align: left;
 }
 
 .AddQuestion, .WindowEditQuestion {
@@ -53,3 +54,4 @@
 .WindowEditQuestion textarea {
   width: 80%;
 }
+

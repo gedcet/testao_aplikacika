@@ -44,10 +44,8 @@ const Question = (props) =>
             {atsakymo_txt_array}
             <button onClick={delete_question}>Trinti klausima </button>
             <button onClick={() =>
-            {
-                props.setShowWindow("WindowEditQuestion")
-                props.setStateWindowEditQuestion( props.question )
-            
+            {   props.setShowWindow("WindowEditQuestion")
+                props.setStateWindowEditQuestion(props.question)
             }}> Redaguok</button>
         </div >
     )

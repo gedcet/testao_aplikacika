@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-
 import './App.css';
 import AddQuestion from './components/AddQuestion.jsx';
 import ShowQuestions from './components/showQuestions';
 import WindowEditQuestion from './components/WindowEditQuestion';
+import WindowQuiz from './components/WindowQuiz';
 
 const App = function ()
 {
@@ -24,12 +24,13 @@ const App = function ()
 
   return (
     <div className="App">
-      
-      <button onClick={() => {setShowWindow("AddQuestion")}}>Prideti klausima </button>
-      <button onClick={() => {setShowWindow(null)}}>Uzdaryti langa </button>
+
+      <button onClick={() => { setShowWindow("AddQuestion") }}>Prideti klausima </button>
+      <button onClick={() => { setShowWindow("ShowQuestionForMe") }}>Perziureti klausimus </button>
+      <button onClick={() => { setShowWindow("ShowQuizForMe") }}>Peradeti viktorina </button>
 
       {showWindow === "AddQuestion" ?
-      <AddQuestion />
+        <AddQuestion closeButton={setShowWindow} />
         :
         null
       }
@@ -44,7 +45,23 @@ const App = function ()
         null
       }
 
-      <ShowQuestions setStateWindowEditQuestion={setStateWindowEditQuestion} setShowWindow={setShowWindow} />
+      {showWindow === "ShowQuestionForMe" ?
+        <ShowQuestions
+          setStateWindowEditQuestion={setStateWindowEditQuestion}
+          setShowWindow={setShowWindow}
+        />
+        :
+        null
+      }
+
+{showWindow === "ShowQuizForMe" ?
+        <WindowQuiz
+          setStateWindowEditQuestion={setStateWindowEditQuestion}
+          setShowWindow={setShowWindow}
+        />
+        :
+        null
+      }
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react"
 import axios from "axios"
 
-const AddQuestion = () => 
+
+const AddQuestion = (props) => 
 {
     const refQuestionText = React.createRef()
     const refQuestionTypeSelectMultiple = React.createRef()
@@ -163,7 +164,8 @@ const AddQuestion = () =>
             </label>
             <pre></pre>
             <button onClick={handleClick}>Ivesti klausima i duomenu baze</button>
-
+            <button onClick={() => { props.closeButton(null) }}>Uzdaryti</button>
+                        
         </div>
     )
 }
