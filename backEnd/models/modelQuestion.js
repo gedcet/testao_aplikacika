@@ -15,7 +15,7 @@ const schema_question = new mongoose.Schema(
         },
         "answers": [
             {
-                "answer": { "type": String, "require": true },
+                "text": { "type": String, "require": true },
                 "correct": { "type": Boolean, "require": true }
             }
         ],

@@ -27,6 +27,7 @@ const ShowQuestions = (props) =>
     for (let i = 0; i < questions.length; i++)
     {
         array_text.push(<Question
+            setShowWindow={props.setShowWindow}
             key={i}
             question={questions[i]}
             get_all_questions={get_all_questions}

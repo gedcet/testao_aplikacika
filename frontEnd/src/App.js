@@ -18,17 +18,33 @@ const App = function ()
       { text: "answer 4", correct: false }],
   })
 
+  const arrayShowWindow = useState(null)
+  const showWindow = arrayShowWindow[0]
+  const setShowWindow = arrayShowWindow[1]
+
   return (
     <div className="App">
+      
+      <button onClick={() => {setShowWindow("AddQuestion")}}>Prideti klausima </button>
+      <button onClick={() => {setShowWindow(null)}}>Uzdaryti langa </button>
 
+      {showWindow === "AddQuestion" ?
       <AddQuestion />
+        :
+        null
+      }
 
-      <WindowEditQuestion
-        state={stateWindowEditQuestion}
-        setState={setStateWindowEditQuestion}
-      />
+      {showWindow === "WindowEditQuestion" ?
+        <WindowEditQuestion
+          setShowWindow={setShowWindow}
+          state={stateWindowEditQuestion}
+          setState={setStateWindowEditQuestion}
+        />
+        :
+        null
+      }
 
-      <ShowQuestions setStateWindowEditQuestion={setStateWindowEditQuestion} />
+      <ShowQuestions setStateWindowEditQuestion={setStateWindowEditQuestion} setShowWindow={setShowWindow} />
     </div>
   );
 }

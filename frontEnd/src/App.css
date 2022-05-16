@@ -27,13 +27,25 @@
   width: 80%;
 }
 
-.AddQuestion, .WindowEditQuestion, .ShowQuestions {
+.ShowQuestions {
   width: 80%;
   margin: auto auto;
   padding: 5% 5%;
   /* position: fixed; */
   top: 0px;
   left: 0px;
+  background-color: beige;
+  border: 1px solid black
+}
+
+.AddQuestion, .WindowEditQuestion {
+  width: 80%;
+  margin: auto auto;
+  padding: 5% 5%;
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: beige;
   border: 1px solid black
 }

@@ -88,19 +88,19 @@ const AddQuestion = () =>
                     "type": getSellectedQuestionType(),
                     "answers": [
                         {
-                            "answer": refAnswer1Text.current.value,
+                            "text": refAnswer1Text.current.value,
                             "correct": refAnswer1Correct.current.checked
                         },
                         {
-                            "answer": refAnswer2Text.current.value,
+                            "text": refAnswer2Text.current.value,
                             "correct": refAnswer2Correct.current.checked
                         },
                         {
-                            "answer": refAnswer3Text.current.value,
+                            "text": refAnswer3Text.current.value,
                             "correct": refAnswer3Correct.current.checked
                         },
                         {
-                            "answer": refAnswer4Text.current.value,
+                            "text": refAnswer4Text.current.value,
                             "correct": refAnswer4Correct.current.checked
                         }
                     ]
@@ -129,40 +129,39 @@ const AddQuestion = () =>
                 <input type="radio" ref={refQuestionTypeSelectSingle} name="radBut"></input>
             </label>
 
-            <h6>Iveskite atsakyma/us</h6>
+            <h6>Iveskite atsakyma/us bei sudekit varneles ant teisingu atsakymu </h6>
 
-            <label>1
+            <label>1. 
                 <input type="text" className="answtxt" ref={refAnswer1Text}></input>
             </label>
-            <label>Correct
+            <label> Correct
                 <input type="checkbox" ref={refAnswer1Correct}></input>
             </label>
             <br />
 
-            <label>2
+            <label>2. 
                 <input type="text" className="answtxt" ref={refAnswer2Text}></input>
             </label>
-            <label>Correct
+            <label> Correct
                 <input type="checkbox" ref={refAnswer2Correct}></input>
             </label>
             <br />
 
-            <label>3
+            <label>3.
                 <input type="text" className="answtxt" ref={refAnswer3Text}></input>
             </label>
-            <label>Correct
+            <label> Correct
                 <input type="checkbox" ref={refAnswer3Correct}></input>
             </label>
             <br />
 
-            <label>4
+            <label>4. 
                 <input type="text" className="answtxt" ref={refAnswer4Text}></input>
             </label>
-            <label>Correct
+            <label> Correct
                 <input type="checkbox" ref={refAnswer4Correct}></input>
             </label>
-            <br />
-
+            <pre></pre>
             <button onClick={handleClick}>Ivesti klausima i duomenu baze</button>
 
         </div>
