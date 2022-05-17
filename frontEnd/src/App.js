@@ -5,6 +5,8 @@ import AddQuestion from './components/AddQuestion.jsx';
 import ShowQuestions from './components/showQuestions';
 import WindowEditQuestion from './components/WindowEditQuestion';
 import WindowQuiz from './components/WindowQuiz';
+import WindowStatus from './components/WindowStatus';
+
 
 const App = function ()
 {
@@ -21,6 +23,10 @@ const App = function ()
   const arrayShowWindow = useState(null)
   const showWindow = arrayShowWindow[0]
   const setShowWindow = arrayShowWindow[1]
+
+  const stateWindowText = useState(null)
+  const readStateWindowText = stateWindowText[0]
+  const setStateWindowText = stateWindowText[1]
 
   return (
     <div className="App">
@@ -54,11 +60,17 @@ const App = function ()
         null
       }
 
-{showWindow === "ShowQuizForMe" ?
+      {showWindow === "ShowQuizForMe" ?
         <WindowQuiz
           setStateWindowEditQuestion={setStateWindowEditQuestion}
           setShowWindow={setShowWindow}
+          setStateWindowText={setStateWindowText}
         />
+        :
+        null
+      }
+      {readStateWindowText !== null ?
+        <WindowStatus text={readStateWindowText}/>
         :
         null
       }
