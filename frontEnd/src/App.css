@@ -63,6 +63,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: beige;
+  background-color: rgb(220, 227, 245);
   border: 1px solid black
 }

@@ -70,7 +70,10 @@ const App = function ()
         null
       }
       {readStateWindowText !== null ?
-        <WindowStatus text={readStateWindowText}/>
+        <WindowStatus
+          text={readStateWindowText}
+          setStateWindowText={setStateWindowText}
+        />
         :
         null
       }
