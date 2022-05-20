@@ -4,6 +4,12 @@ const routerQuestions = express.Router()
 
 routerQuestions.get("/", async function (req, res)
 {
+    if(req.cookies.sausainis1 === undefined)
+    {
+        res.statusCode = 403
+        res.end()
+        return
+    }
     try
     {
         const result = await model_question.find()

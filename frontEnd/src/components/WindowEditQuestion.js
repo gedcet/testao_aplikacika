@@ -86,8 +86,8 @@ const WindowEditQuestion = (props) =>
 
     return (
         <div className="WindowEditQuestion">
-            <a id="sokCiaKadNesukinetPelesRatuko"></a>
-            <h1>WindowEditQuestion</h1>
+            
+            <h1>Window Edit Question</h1>
 
             <textarea
                 value={props.state.text}

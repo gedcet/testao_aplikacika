@@ -1,7 +1,6 @@
 import React from "react"
 import axios from "axios"
 
-
 const AddQuestion = (props) => 
 {
     const refQuestionText = React.createRef()
@@ -118,7 +117,7 @@ const AddQuestion = (props) =>
 
     return (
         <div className="AddQuestion">
-            <h1>AddQuestion</h1>
+            <h1>Add question</h1>
             <textarea ref={refQuestionText} className="addquestiontextarea"></textarea>
 
             <h6>Klausimo tipas</h6>
@@ -164,8 +163,7 @@ const AddQuestion = (props) =>
             </label>
             <pre></pre>
             <button onClick={handleClick}>Ivesti klausima i duomenu baze</button>
-            <button onClick={() => { props.closeButton(null) }}>Uzdaryti</button>
-                        
+            <button onClick={() => { props.closeButton(null) }}>Uzdaryti</button>             
         </div>
     )
 }

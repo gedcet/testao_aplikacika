@@ -29,9 +29,8 @@ const WindowQuiz = (props) =>
     const questionsCopy = [...questions]
 
     const stataCssClassName = React.useState(null)
-    const cssClassName = null
-    const readCssClassName = cssClassName[0]
-    const setCssClassName = cssClassName[1]
+    const readCssClassName = stataCssClassName[0]
+    const setCssClassName = stataCssClassName[1]
 
     for (let i = 0; i < questionsCopy.length; i++)
     {
@@ -46,25 +45,25 @@ const WindowQuiz = (props) =>
                             questionsCopy[i].answers[0].text === undefined ?
                                 null
                                 :
-                                <AnswerShow setClassName={cssClassName} answer={questionsCopy[i].answers[0]}/>
+                                <AnswerShow setClassName={readCssClassName} answer={questionsCopy[i].answers[0]} />
                         }
                         {
                             questionsCopy[i].answers[1].text === undefined ?
                                 null
                                 :
-                                <AnswerShow setClassName={cssClassName} answer={questionsCopy[i].answers[1]}/>
+                                <AnswerShow setClassName={readCssClassName} answer={questionsCopy[i].answers[1]} />
                         }
-                       {
+                        {
                             questionsCopy[i].answers[2].text === undefined ?
                                 null
                                 :
-                                <AnswerShow setClassName={cssClassName} answer={questionsCopy[i].answers[2]}/>
+                                <AnswerShow setClassName={readCssClassName} answer={questionsCopy[i].answers[2]} />
                         }
                         {
                             questionsCopy[i].answers[3].text === undefined ?
                                 null
                                 :
-                                <AnswerShow setClassName={cssClassName} answer={questionsCopy[i].answers[3]}/>
+                                <AnswerShow setClassName={readCssClassName} answer={questionsCopy[i].answers[3]} />
                         }
                     </tbody>
                 </table>
@@ -78,7 +77,7 @@ const WindowQuiz = (props) =>
         <div className="viktorinos_langas">
             <h1 > Atsakykite i klausimus: </h1>
             {array_text}
-            <button onClick={() => { props.setShowWindow(null); cssClassName="answer_correct"  }}>Uzdaryti viktorina</button>
+            <button onClick={() => { props.setShowWindow(null); readCssClassName = "answer_correct" }}>Uzdaryti viktorina</button>
             <button onClick={() =>
             {
                 let taskai = 0
@@ -110,8 +109,21 @@ const WindowQuiz = (props) =>
                     rezultasIsvada = "Jus viktorinos neislaiket"
                 }
 
-                { props.setStateWindowText("Uz viktorina gavote " + taskai + " taska(us), is galimu " + questionsCopy.length + " tasku, arba islaikymo procentas. " + rezultasProcentais + `\n ` + rezultasIsvada) }
-            }}>Varnu rezultatai </button>
+                let tasko_galune = ""
+                if (taskai === 1)
+                {
+                    tasko_galune = " taska"
+                }
+                else
+                {
+                    tasko_galune = " taskus"
+                }
+
+                props.setStateWindowText("Uz viktorina gavote " + taskai + tasko_galune + ", is galimu " + questionsCopy.length + " tasku, arba islaikymo procentas. " + rezultasProcentais + `\n ` + rezultasIsvada)
+                setCssClassName("answer_correct")
+            }
+            
+            }>Varnu rezultatai </button>
         </div>
     )
 }
